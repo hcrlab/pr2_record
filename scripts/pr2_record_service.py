@@ -42,9 +42,9 @@ class BagServer:
         print("Attempting to close bag file: " + self.filename)
         success = False
         try:
+            self.tf_subscriber.unregister()
             self.bag.close()
             print("Successfully closed bag file: " + self.filename)
-            self.tf_subscriber.unregister()
             success = True
         except:
             print("Could not close bag file: " + self.filename)

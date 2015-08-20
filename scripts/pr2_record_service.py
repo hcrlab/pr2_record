@@ -43,6 +43,7 @@ class BagServer:
         success = False
         try:
             self.tf_subscriber.unregister()
+            rospy.sleep(0.2)
             self.bag.close()
             print("Successfully closed bag file: " + self.filename)
             success = True
@@ -59,10 +60,10 @@ class BagServer:
         success = False
         try:
             self.recording = True
-            rospy.sleep(0.5)
+            rospy.sleep(0.2)
             self.bag.write(self.pointcloud_topic, self.pointcloud_msg)
             self.bag.write(self.image_topic, self.image_msg)
-            rospy.sleep(0.5)
+            rospy.sleep(0.2)
             self.recording = False
             success = True
         except:

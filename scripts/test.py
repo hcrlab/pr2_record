@@ -18,3 +18,11 @@ record_depth_service()
 rospy.sleep(1)
 close_bag_service()
 
+open_bag_service('/home/djbutler/test3.bag')
+rospy.sleep(1)
+record_depth_service()
+rospy.sleep(2)
+record_depth_service()
+rospy.sleep(2)
+close_bag_service()
+

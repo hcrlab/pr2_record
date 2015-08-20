@@ -59,8 +59,10 @@ class BagServer:
         success = False
         try:
             self.recording = True
+            rospy.sleep(0.5)
             self.bag.write(self.pointcloud_topic, self.pointcloud_msg)
             self.bag.write(self.image_topic, self.image_msg)
+            rospy.sleep(0.5)
             self.recording = False
             success = True
         except:

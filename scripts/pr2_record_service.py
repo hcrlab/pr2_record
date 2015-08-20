@@ -21,8 +21,8 @@ class BagServer:
         self.image_msg = msg
 
     def tf_callback(self, msg):
-        pass
-        # self.bag.write("tf", msg)
+        if not self.recording:
+            self.bag.write("tf", msg)
 
     def open_bag_file(self, req):
         print("Attempting to open bag file: " + req.filename)
@@ -57,8 +57,10 @@ class BagServer:
             return RecordDepthFrameResponse(False)
         success = False
         try:
+            self.recording = True
             self.bag.write(self.pointcloud_topic, self.pointcloud_msg)
             self.bag.write(self.image_topic, self.image_msg)
+            self.recording = False
             success = True
         except:
             print("Could not write to bag. Have you called OpenBagFile?")

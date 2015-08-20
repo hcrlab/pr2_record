@@ -13,7 +13,7 @@ class BagServer:
         self.image_topic = "/head_mount_kinect/rgb/image_rect_color"
         self.pointcloud_subscriber = rospy.Subscriber(self.pointcloud_topic, PointCloud2, self.pointcloud_callback)
         self.image_subscriber = rospy.Subscriber(self.image_topic, Image, self.image_callback)
-  
+
     def pointcloud_callback(self, msg):
         self.pointcloud_msg = msg
       
@@ -21,7 +21,8 @@ class BagServer:
         self.image_msg = msg
 
     def tf_callback(self, msg):
-        self.bag.write("tf", msg)
+        pass
+        # self.bag.write("tf", msg)
 
     def open_bag_file(self, req):
         print("Attempting to open bag file: " + req.filename)

@@ -11,6 +11,7 @@ class BagServer:
     def __init__(self):
         self.pointcloud_topic = "/head_mount_kinect/depth_registered/points"
         self.image_topic = "/head_mount_kinect/rgb/image_rect_color"
+        self.recording = False
         self.pointcloud_subscriber = rospy.Subscriber(self.pointcloud_topic, PointCloud2, self.pointcloud_callback)
         self.image_subscriber = rospy.Subscriber(self.image_topic, Image, self.image_callback)
 

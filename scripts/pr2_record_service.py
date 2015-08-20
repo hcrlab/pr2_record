@@ -21,7 +21,7 @@ class BagServer:
         self.image_msg = msg
 
     def tf_callback(self, msg):
-        self.bag.write(self.image_topic, self.image_msg)        
+        self.bag.write("tf", msg)
 
     def open_bag_file(self, req):
         print("Attempting to open bag file: " + req.filename)
